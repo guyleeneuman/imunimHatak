@@ -19,7 +19,7 @@
 
   <input type="number" name="solider_number" placeholder="מס' חיילים">
 
-  <input type="text" name="place" placeholder="מקום האימון">
+  <input type="text" name="place" placeholder="מיקום האימון">
 
   <!-- כותרת -->
 <div class="dropdown">
@@ -77,8 +77,11 @@
   <!-- הערות -->
   <textarea name="notes" placeholder="הערות:"></textarea>
   
-    <textarea class="detailsField" name="details" placeholder="פירוט:איזה גדוד/סיירת/אחר"></textarea>
-  <!-- כפתור שליחה -->
+<textarea class="detailsField" name="details" placeholder="פירוט:
+גדוד/סיירת/אחר"></textarea>   <!-- כפתור שליחה -->
+<input type="date" name="date" class="halfInput">
+<input type="time" name="time" class="halfInput">
+
 <button type="submit" class="submitBtn">
   <img src="assets/butttons/submit.png" alt="הגשה">
 </button>
@@ -105,7 +108,7 @@ function goToMenu() {
 document.getElementById("contactForm").addEventListener("submit", function (e) {
     e.preventDefault();
 
-    const name = this.user_name.value.trim();
+     const name = this.user_name.value.trim();
     const phone = this.phone_number.value.trim();
     const job = this.job.value.trim();
     const solider = this.solider_number.value.trim();
@@ -113,24 +116,27 @@ document.getElementById("contactForm").addEventListener("submit", function (e) {
     const unit = document.getElementById("unitInput").value.trim();
     const details = this.details.value.trim();
     const notes = this.notes.value.trim();
-
+    const date = this.date.value;
+    const time = this.time.value;
     // ✅ בדיקה שכל השדות מלאים
-    if (!name || !phone || !job || !solider || !place || !unit || !details) {
-        alert("יש למלא את כל השדות לפני שליחה");
-        return;
-    }
+  if (!name || !phone || !job || !solider || !place || !unit || !details || !date || !time) {
+    alert("יש למלא את כל השדות לפני שליחה");
+    return;
+}
 
-    const data = {
-        user_name: name,
-        phone_number: phone,
-        job: job,
-        solider_number: solider,
-        place: place,
-        unit: unit,
-        details: details,
-        notes: notes,
-        title: "מעוז"
-    };
+const data = {
+    user_name: name,
+    phone_number: phone,
+    job: job,
+    solider_number: solider,
+    place: place,
+    unit: unit,
+    details: details,
+    notes: notes,
+    date: date,
+    time: time,
+    title: "מעוז"
+};
 
     console.log("DATA:", data);
 

@@ -28,6 +28,7 @@ body {
     transform: translate(-50%, -50%);
 }
 
+
 .titlePopUp {
     position: absolute;
     top: 28%;
@@ -39,15 +40,24 @@ body {
 
 .text{
     position: absolute;
-    top: 53%;
+    top: 35%;
     left: 50%;
-    width: 75vw;
+    transform: translateX(-50%);
+    width: 300px;
     text-align: right;
     font-size: 1.2rem;
-    z-index: 1000000000000000;
+    z-index: 10000000000000000;
     direction: rtl;
-    transform: translate(-50%, -50%);
+
 }
+.popUpBackground {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10000000;
+}
+
 
 .title2 {
     position: absolute;
@@ -88,9 +98,11 @@ body {
 .button1 {
     cursor: pointer;
     position: absolute;
-    top: 10%;
-    left: 62%;
-    transform: translateX(-50%);
+    top: 20%;
+    right: 0;
+
+    transform: translateY(-50%);
+
     -webkit-tap-highlight-color: transparent;
     user-select: none;
     touch-action: manipulation;
@@ -98,20 +110,22 @@ body {
 }
 
 .button1:hover {
-    transform: translateX(-50%) scale(1.1);
+    transform: translateY(-50%) scale(1.1); /* 👈 שמרנו על Y */
     filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.8));
 }
 
 .button1:active {
-    transform: translateX(-50%) scale(0.95);
+    transform: translateY(-50%) scale(0.95);
 }
 
 .button2 {
     cursor: pointer;
     position: absolute;
-    top: 25%;
-    left: 34%;
-    transform: translateX(-50%);
+    top: 35%;
+    left: 0;
+
+    transform: translateY(-50%);
+
     -webkit-tap-highlight-color: transparent;
     user-select: none;
     touch-action: manipulation;
@@ -119,20 +133,21 @@ body {
 }
 
 .button2:hover {
-    transform: translateX(-50%) scale(1.1);
+    transform: translateY(-50%) scale(1.1); /* 👈 שמרנו על Y */
     filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.8));
 }
 
 .button2:active {
-    transform: translateX(-50%) scale(0.95);
+    transform: translateY(-50%) scale(0.95);
 }
-
 .button3 {
     cursor: pointer;
     position: absolute;
-    top: 40%;
-    left: 62%;
-    transform: translateX(-50%);
+    top: 50%;
+    right: 0;
+
+    transform: translateY(-50%);
+
     -webkit-tap-highlight-color: transparent;
     user-select: none;
     touch-action: manipulation;
@@ -140,20 +155,21 @@ body {
 }
 
 .button3:hover {
-    transform: translateX(-50%) scale(1.1);
+    transform: translateY(-50%) scale(1.1); /* 👈 שמרנו על Y */
     filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.8));
 }
 
 .button3:active {
-    transform: translateX(-50%) scale(0.95);
+    transform: translateY(-50%) scale(0.95);
 }
-
 .button4 {
     cursor: pointer;
     position: absolute;
-    top: 55%;
-    left: 34%;
-    transform: translateX(-50%);
+    top: 65%;
+    left: 0;
+
+    transform: translateY(-50%);
+
     -webkit-tap-highlight-color: transparent;
     user-select: none;
     touch-action: manipulation;
@@ -161,21 +177,14 @@ body {
 }
 
 .button4:hover {
-    transform: translateX(-50%) scale(1.1);
+    transform: translateY(-50%) scale(1.1); /* 👈 שמרנו על Y */
     filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.8));
 }
 
 .button4:active {
-    transform: translateX(-50%) scale(0.95);
+    transform: translateY(-50%) scale(0.95);
 }
 
-.popUpBackground {
-    position: absolute;
-    top: 20%;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 10000000;
-}
 
 .toForm {
     cursor: pointer;
@@ -200,25 +209,26 @@ body {
 }
 
 .goBack {
-    cursor: pointer;
+  cursor: pointer;
     position: absolute;
-    top: 10%;
-    left: 29%;
-    transform: translateX(-50%);
+    top: 15%;
+    left: 0;
+    z-index: 1000000;
+    transform: translateY(-50%);
+
     -webkit-tap-highlight-color: transparent;
     user-select: none;
     touch-action: manipulation;
-    z-index: 1000000000;
     transition: transform 0.3s ease, filter 0.3s ease;
 }
 
 .goBack:hover {
-    transform: translateX(-50%) scale(1.1);
+    transform: translateY(-50%) scale(1.1); /* 👈 שמרנו על Y */
     filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.8));
 }
 
 .goBack:active {
-    transform: translateX(-50%) scale(0.95);
+    transform: translateY(-50%) scale(0.95);
 }
 #overlay {
     position: fixed;
@@ -434,6 +444,7 @@ body {
     width: fit-content;
 }
 
+
 .submitBtn img {
     width: 180px; /* תשני לפי העיצוב שלך */
     transition: transform 0.3s ease, filter 0.3s ease;
@@ -446,6 +457,27 @@ body {
 
 .submitBtn:active img {
     transform: scale(0.95);
+}
+
+.halfInput {
+    width: calc(50% - 8px);
+    padding: 16px 20px; /* כמו השאר */
+    
+    box-sizing: border-box;
+
+    border-radius: 50px;
+    border: none;
+    outline: none;
+
+    direction: rtl;
+    background: rgba(107, 116, 158, 0.62);
+    color: #FFFCE9;
+
+    text-align: center;
+    font-size: 1.3rem;
+    font-family: "secular";
+
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
 /* רקע מוחשך */
@@ -490,4 +522,35 @@ body {
         opacity: 1;
         transform: translate(-50%, -50%) scale(1);
     }
+}
+
+/* התאמה ל-date ול-time */
+.pillForm input[type="date"],
+.pillForm input[type="time"] {
+    appearance: none;
+    -webkit-appearance: none;
+    
+    width: calc(50% - 8px);
+    padding: 12px 20px;
+
+    border-radius: 50px;
+    border: none;
+    outline: none;
+
+    direction: rtl;
+    background: rgba(107, 116, 158, 0.62);
+    color: #FFFCE9;
+
+    text-align: center;
+    font-size: 1.3rem;
+    font-family: "secular";
+
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* אייקון לבן (כרום) */
+.pillForm input[type="date"]::-webkit-calendar-picker-indicator,
+.pillForm input[type="time"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    cursor: pointer;
 }
