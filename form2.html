@@ -219,35 +219,40 @@ document.addEventListener("click", (e) => {
         list.style.display = "none";
     }
 });
-
 const dateInput = document.getElementById("dateInput");
 const timeInput = document.getElementById("timeInput");
 
 // ===== DATE =====
-dateInput.addEventListener("focus", function () {
-    if (this.value === "תאריך") {
-        this.value = "";
+dateInput.addEventListener("click", function () {
+    if (this.type === "text") {
         this.type = "date";
+
+        setTimeout(() => {
+            this.showPicker && this.showPicker(); // פותח לוח אם אפשר
+        }, 50);
     }
 });
 
 dateInput.addEventListener("blur", function () {
-    if (this.value === "") {
+    if (!this.value) {
         this.type = "text";
         this.value = "תאריך";
     }
 });
 
 // ===== TIME =====
-timeInput.addEventListener("focus", function () {
-    if (this.value === "שעה") {
-        this.value = "";
+timeInput.addEventListener("click", function () {
+    if (this.type === "text") {
         this.type = "time";
+
+        setTimeout(() => {
+            this.showPicker && this.showPicker();
+        }, 50);
     }
 });
 
 timeInput.addEventListener("blur", function () {
-    if (this.value === "") {
+    if (!this.value) {
         this.type = "text";
         this.value = "שעה";
     }
