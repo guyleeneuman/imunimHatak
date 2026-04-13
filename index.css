@@ -40,7 +40,7 @@ body {
 
 .text{
     position: absolute;
-    top: 30%;
+    top: 32%;
     left: 50%;
     transform: translateX(-50%);
     width: 300px;

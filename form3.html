@@ -80,8 +80,8 @@
   
 <textarea class="detailsField" name="details" placeholder="פירוט:
 גדוד/סיירת/אחר"></textarea>   <!-- כפתור שליחה -->
-<input type="date" name="date" class="halfInput">
-<input type="time" name="time" class="halfInput">
+<input type="text" value="תאריך" class="halfInput" id="dateInput">
+<input type="text" value="שעה" class="halfInput" id="timeInput">
 
 <button type="submit" class="submitBtn">
   <img src="assets/butttons/submit.png" alt="הגשה">
@@ -116,8 +116,8 @@ document.getElementById("contactForm").addEventListener("submit", function (e) {
     const unit = document.getElementById("unitInput").value.trim();
     const details = this.details.value.trim();
     const notes = this.notes.value.trim();
-    const date = this.date.value;
-    const time = this.time.value;
+    const date = dateInput.value === "תאריך" ? "" : dateInput.value;
+    const time = timeInput.value === "שעה" ? "" : timeInput.value;
     // ✅ בדיקה שכל השדות מלאים
   if (!name || !phone || !job || !solider || !place || !unit || !details || !date || !time) {
     alert("יש למלא את כל השדות לפני שליחה");
@@ -213,6 +213,39 @@ document.querySelectorAll(".dropdownItem").forEach(item => {
 document.addEventListener("click", (e) => {
     if (!dropdown.contains(e.target)) {
         list.style.display = "none";
+    }
+});
+
+const dateInput = document.getElementById("dateInput");
+const timeInput = document.getElementById("timeInput");
+
+// ===== DATE =====
+dateInput.addEventListener("focus", function () {
+    if (this.value === "תאריך") {
+        this.value = "";
+        this.type = "date";
+    }
+});
+
+dateInput.addEventListener("blur", function () {
+    if (this.value === "") {
+        this.type = "text";
+        this.value = "תאריך";
+    }
+});
+
+// ===== TIME =====
+timeInput.addEventListener("focus", function () {
+    if (this.value === "שעה") {
+        this.value = "";
+        this.type = "time";
+    }
+});
+
+timeInput.addEventListener("blur", function () {
+    if (this.value === "") {
+        this.type = "text";
+        this.value = "שעה";
     }
 });
 </script>
