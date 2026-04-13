@@ -79,8 +79,8 @@
   
 <textarea class="detailsField" name="details" placeholder="פירוט:
 גדוד/סיירת/אחר"></textarea>   <!-- כפתור שליחה -->
-<input type="text" value="תאריך" class="halfInput" id="dateInput">
-<input type="text" value="שעה" class="halfInput" id="timeInput">
+<input type="date" name="date" class="halfInput" required>
+<input type="time" name="time" class="halfInput" required>
 
 <button type="submit" class="submitBtn">
   <img src="assets/butttons/submit.png" alt="הגשה">
@@ -224,36 +224,30 @@ const dateInput = document.getElementById("dateInput");
 const timeInput = document.getElementById("timeInput");
 
 // ===== DATE =====
-dateInput.addEventListener("click", function () {
-    if (this.type === "text") {
+dateInput.addEventListener("focus", function () {
+    if (this.value === "תאריך") {
+        this.value = "";
         this.type = "date";
-
-        setTimeout(() => {
-            this.showPicker && this.showPicker(); // פותח לוח אם אפשר
-        }, 50);
     }
 });
 
 dateInput.addEventListener("blur", function () {
-    if (!this.value) {
+    if (this.value === "") {
         this.type = "text";
         this.value = "תאריך";
     }
 });
 
 // ===== TIME =====
-timeInput.addEventListener("click", function () {
-    if (this.type === "text") {
+timeInput.addEventListener("focus", function () {
+    if (this.value === "שעה") {
+        this.value = "";
         this.type = "time";
-
-        setTimeout(() => {
-            this.showPicker && this.showPicker();
-        }, 50);
     }
 });
 
 timeInput.addEventListener("blur", function () {
-    if (!this.value) {
+    if (this.value === "") {
         this.type = "text";
         this.value = "שעה";
     }
