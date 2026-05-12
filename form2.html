@@ -80,7 +80,7 @@
   
 <textarea class="detailsField" name="details" placeholder="פירוט:
 גדוד/סיירת/אחר"></textarea>   <!-- כפתור שליחה -->
-<input type="date" name="date" class="halfInput" required>
+<input type="date" id="dateInput" name="date" class="halfInput" required>
 <input type="time" name="time" class="halfInput" required>
 
 <button type="submit" class="submitBtn">
@@ -117,14 +117,20 @@ document.getElementById("contactForm").addEventListener("submit", function (e) {
     const unit = document.getElementById("unitInput").value.trim();
     const details = this.details.value.trim();
     const notes = this.notes.value.trim();
-    const date = dateInput.value === "תאריך" ? "" : dateInput.value;
-    const time = timeInput.value === "שעה" ? "" : timeInput.value;
+       const date = this.date.value;
+    const time = this.time.value;
 
     // ✅ בדיקה שכל השדות מלאים
   if (!name || !phone || !job || !solider || !place || !unit || !details || !date || !time) {
     alert("יש למלא את כל השדות לפני שליחה");
     return;
 }
+
+// const blockedDates = [
+//     "2026-05-15",
+//     "2026-05-20",
+//     "2026-05-25"
+// ]; 
 
 const data = {
     user_name: name,
@@ -234,6 +240,50 @@ dateInput.addEventListener("blur", function () {
     if (this.value === "") {
         this.type = "text";
         this.value = "תאריך";
+    }
+});
+const blockedDates = [
+    "2026-05-12",
+    "2026-05-13",
+    "2026-05-14",
+    "2026-05-17",
+    "2026-05-18",
+    "2026-05-19",
+    "2026-05-20",
+    "2026-05-24",
+    "2026-05-25",
+    "2026-05-16",
+    "2026-05-27",
+];
+
+const blockedDays = [4, 5, 6]; // חמישי, שישי, שבת
+
+dateInput.addEventListener("input", function () {
+
+    const selectedDate = this.value;
+
+    if (!selectedDate) return;
+
+    const day = new Date(selectedDate).getDay();
+
+    // חסימת ימים
+    if (blockedDays.includes(day)) {
+
+        alert("לא ניתן לבחור את היום הזה");
+
+        this.value = "";
+
+        return;
+    }
+
+    // חסימת תאריכים ספציפיים
+    if (blockedDates.includes(selectedDate)) {
+
+        alert("התאריך שבחרת אינו זמין");
+
+        this.value = "";
+
+        return;
     }
 });
 
