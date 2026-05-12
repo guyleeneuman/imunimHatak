@@ -258,7 +258,7 @@ const blockedDates = [
 
 const blockedDays = [4, 5, 6]; // חמישי, שישי, שבת
 
-dateInput.addEventListener("input", function () {
+dateInput.addEventListener("change", function () {
 
     const selectedDate = this.value;
 
@@ -269,9 +269,11 @@ dateInput.addEventListener("input", function () {
     // חסימת ימים
     if (blockedDays.includes(day)) {
 
-        alert("לא ניתן לבחור את היום הזה");
-
         this.value = "";
+
+        setTimeout(() => {
+            alert("לא ניתן לבחור חמישי / שישי / שבת");
+        }, 100);
 
         return;
     }
@@ -279,14 +281,15 @@ dateInput.addEventListener("input", function () {
     // חסימת תאריכים ספציפיים
     if (blockedDates.includes(selectedDate)) {
 
-        alert("התאריך שבחרת אינו זמין");
-
         this.value = "";
+
+        setTimeout(() => {
+            alert("התאריך שבחרת אינו זמין");
+        }, 100);
 
         return;
     }
 });
-
 // ===== TIME =====
 timeInput.addEventListener("focus", function () {
     if (this.value === "שעה") {
