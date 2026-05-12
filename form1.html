@@ -249,7 +249,12 @@ const blockedDates = [
     // "2026-05-27",
 ];
 
+
 const blockedDays = [4, 5, 6]; // חמישי, שישי, שבת
+
+let lastValidDate = "";
+
+const today = new Date().toISOString().split("T")[0];
 
 dateInput.addEventListener("change", function () {
 
@@ -259,10 +264,10 @@ dateInput.addEventListener("change", function () {
 
     const day = new Date(selectedDate).getDay();
 
-    // חסימת ימים
+    // חסימת חמישי / שישי / שבת
     if (blockedDays.includes(day)) {
 
-        this.value = "";
+        this.value = lastValidDate;
 
         setTimeout(() => {
             alert("לא ניתן לבחור חמישי / שישי / שבת");
@@ -272,9 +277,12 @@ dateInput.addEventListener("change", function () {
     }
 
     // חסימת תאריכים ספציפיים
-    if (blockedDates.includes(selectedDate)) {
+    if (
+        blockedDates.includes(selectedDate) &&
+        selectedDate !== today
+    ) {
 
-        this.value = "";
+        this.value = lastValidDate;
 
         setTimeout(() => {
             alert("התאריך שבחרת אינו זמין");
@@ -282,6 +290,9 @@ dateInput.addEventListener("change", function () {
 
         return;
     }
+
+    // אם התאריך תקין → שומרים אותו
+    lastValidDate = selectedDate;
 });
 // ===== TIME =====
 timeInput.addEventListener("focus", function () {
